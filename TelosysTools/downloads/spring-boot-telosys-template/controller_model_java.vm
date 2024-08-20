@@ -1,0 +1,67 @@
+/* 
+ * Created on $today.date ( Date ISO $today.date("yyyy-MM-dd") - Time $today.time )
+ */
+package ${target.javaPackageFromFolder(${SRC})};
+
+import ${ROOT_PKG}.${ENTITY_PKG}.${entity.name};
+import ${ROOT_PKG}.${SERVICE_INTERFACE_PKG}.${entity.name}Service;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+
+import jakarta.validation.Valid;
+import java.util.List;
+
+
+
+/**
+* <h2>${entity.name}Controller</h2>
+*/
+@Controller
+@RequestMapping("/${entity.name.toLowerCase()}")
+public class ${entity.name}Controller {
+
+
+	@Autowired
+	private ${entity.name}Service ${entity.name.toLowerCase()}Service;
+
+	@PostMapping(value = "")
+	public String create${entity.name}(@Valid ${entity.name} model) {
+
+   		 ${entity.name} data = ${entity.name.toLowerCase()}Service.create(model);
+    		if (data != null) {
+    			return "";
+  			  } else {
+    			return "";
+   			 }
+    }
+
+    @GetMapping(value = "")
+    public String getAll${entity.name}(Model model) {
+        List<${entity.name}> ${entity.name.toLowerCase()}List = ${entity.name.toLowerCase()}Service.getAll();
+
+		model.addAttribute("${entity.name}s",${entity.name.toLowerCase()}List);
+
+        return "";
+    }
+
+        @GetMapping(value = "/{id}")
+    public String getOne${entity.name}(@PathVariable("id") Integer id, Model model) {
+
+            ${entity.name} e = ${entity.name.toLowerCase()}Service.getOne(id);
+            if (e == null) {
+            	return "";
+            }
+			model.addAttribute("${entity.name.toLowerCase()}",e);
+            return "";
+    }
+
+
+
+}

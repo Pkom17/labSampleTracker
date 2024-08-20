@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databases defaultId="1" maxId="10">
+    <db dialect="org.hibernate.dialect.PostgreSQLDialect" driver="org.postgresql.Driver" id="0" isolationLevel="" name="POSTGRESQL" poolSize="1" typeName="POSTGRESQL" url="jdbc:postgresql://localhost:5435/sample_tracker_db?currentSchema=sample_tracker">
+        <property name="user" value="appuser"/>
+        <property name="password" value="App_s3cret_Password"/>
+        <metadata catalog="" schema="sample_tracker" table-name-exclude="" table-name-include="" table-name-pattern="%" table-types="TABLE"/>
+    </db>
+</databases>

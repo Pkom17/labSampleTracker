@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Telosys Database Repository --><root>
+    <tableList databaseId="0" databaseName="POSTGRESQL" databaseProductName="PostgreSQL" generation="2024-03-31 10:24:28">
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="AppRole" name="app_role" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="true" dbPosition="2" dbSize="100" dbTypeName="varchar" inputType="text" javaName="name" javaType="java.lang.String" jdbcTypeCode="12" label="Name" maxLength="100" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="true" dbName="is_active" dbNotNull="true" dbPosition="3" dbSize="1" dbTypeName="bool" inputType="checkbox" javaName="isActive" javaType="java.lang.Boolean" jdbcTypeCode="-7" label="Is active" notNull="true" selected="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_app_role_1" id="LINK_FK_fk_app_role_1_I" inverseSideOf="LINK_FK_fk_app_role_1_O" javaName="listOfAppUserHasRole" javaType="unused" joinTableName="" mappedBy="appRole" optional="" owningSide="false" sourceTableName="app_role" targetEntity="AppUserHasRole" targetTableName="app_user_has_role" used="true"/>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="AppUser" name="app_user" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="login" dbNotNull="true" dbPosition="2" dbSize="255" dbTypeName="varchar" inputType="text" javaName="login" javaType="java.lang.String" jdbcTypeCode="12" label="Login" maxLength="255" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="password" dbNotNull="true" dbPosition="3" dbSize="255" dbTypeName="varchar" inputType="text" javaName="password" javaType="java.lang.String" jdbcTypeCode="12" label="Password" maxLength="255" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="true" dbName="password_reset" dbNotNull="false" dbPosition="4" dbSize="1" dbTypeName="bool" inputType="checkbox" javaName="passwordReset" javaType="java.lang.Boolean" jdbcTypeCode="-7" label="Password reset" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="true" dbName="is_active" dbNotNull="true" dbPosition="5" dbSize="1" dbTypeName="bool" inputType="checkbox" javaName="isActive" javaType="java.lang.Boolean" jdbcTypeCode="-7" label="Is active" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="false" dbName="is_locked" dbNotNull="true" dbPosition="6" dbSize="1" dbTypeName="bool" inputType="checkbox" javaName="isLocked" javaType="java.lang.Boolean" jdbcTypeCode="-7" label="Is locked" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="first_name" dbNotNull="false" dbPosition="7" dbSize="100" dbTypeName="varchar" inputType="text" javaName="firstName" javaType="java.lang.String" jdbcTypeCode="12" label="First name" maxLength="100" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="last_name" dbNotNull="false" dbPosition="8" dbSize="100" dbTypeName="varchar" inputType="text" javaName="lastName" javaType="java.lang.String" jdbcTypeCode="12" label="Last name" maxLength="100" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="phone_contact" dbNotNull="true" dbPosition="9" dbSize="45" dbTypeName="varchar" inputType="text" javaName="phoneContact" javaType="java.lang.String" jdbcTypeCode="12" label="Phone contact" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="last_login" dbNotNull="false" dbPosition="10" dbSize="29" dbTypeName="timestamp" inputType="" javaName="lastLogin" javaType="java.util.Date" jdbcTypeCode="93" label="Last login" notNull="false" selected="true"/>
+            <column dateType="D" dbComment="" dbDefaultValue="" dbName="password_expire_at" dbNotNull="false" dbPosition="11" dbSize="13" dbTypeName="date" inputType="date" javaName="passwordExpireAt" javaType="java.util.Date" jdbcTypeCode="91" label="Password expire at" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="created_at" dbNotNull="false" dbPosition="12" dbSize="29" dbTypeName="timestamp" inputType="" javaName="createdAt" javaType="java.util.Date" jdbcTypeCode="93" label="Created at" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="created_by" dbNotNull="false" dbPosition="13" dbSize="10" dbTypeName="int4" inputType="number" javaName="createdBy" javaType="java.lang.Integer" jdbcTypeCode="4" label="Created by" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="last_updated_at" dbNotNull="false" dbPosition="14" dbSize="29" dbTypeName="timestamp" inputType="" javaName="lastUpdatedAt" javaType="java.util.Date" jdbcTypeCode="93" label="Last updated at" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="last_updated_by" dbNotNull="false" dbPosition="15" dbSize="10" dbTypeName="int4" inputType="number" javaName="lastUpdatedBy" javaType="java.lang.Integer" jdbcTypeCode="4" label="Last updated by" notNull="false" selected="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_ride_app_user_1" id="LINK_FK_fk_ride_app_user_1_I" inverseSideOf="LINK_FK_fk_ride_app_user_1_O" javaName="listOfRide" javaType="unused" joinTableName="" mappedBy="appUser" optional="" owningSide="false" sourceTableName="app_user" targetEntity="Ride" targetTableName="ride" used="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_app_user_1" id="LINK_FK_fk_app_user_1_I" inverseSideOf="LINK_FK_fk_app_user_1_O" javaName="listOfAppUserHasRole" javaType="unused" joinTableName="" mappedBy="appUser" optional="" owningSide="false" sourceTableName="app_user" targetEntity="AppUserHasRole" targetTableName="app_user_has_role" used="true"/>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="AppUserHasRole" name="app_user_has_role" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="app_role_id" dbNotNull="true" dbPosition="2" dbSize="10" dbTypeName="int4" inputType="number" javaName="appRoleId" javaType="java.lang.Integer" jdbcTypeCode="4" label="App role id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="app_user_id" dbNotNull="true" dbPosition="3" dbSize="10" dbTypeName="int4" inputType="number" javaName="appUserId" javaType="java.lang.Integer" jdbcTypeCode="4" label="App user id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="true" dbName="is_active" dbNotNull="true" dbPosition="4" dbSize="1" dbTypeName="bool" inputType="checkbox" javaName="isActive" javaType="java.lang.Boolean" jdbcTypeCode="-7" label="Is active" notNull="true" selected="true"/>
+            <fk name="fk_app_role_1">
+                <fkcol colname="app_role_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="app_user_has_role" tableref="app_role" updaterule="3"/>
+            </fk>
+            <fk name="fk_app_user_1">
+                <fkcol colname="app_user_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="app_user_has_role" tableref="app_user" updaterule="3"/>
+            </fk>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_app_user_1" id="LINK_FK_fk_app_user_1_O" inverseSideOf="" javaName="appUser" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="app_user_has_role" targetEntity="AppUser" targetTableName="app_user" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="app_user_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_app_role_1" id="LINK_FK_fk_app_role_1_O" inverseSideOf="" javaName="appRole" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="app_user_has_role" targetEntity="AppRole" targetTableName="app_role" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="app_role_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="Circuit" name="circuit" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="circuit_number" dbNotNull="false" dbPosition="2" dbSize="100" dbTypeName="varchar" inputType="text" javaName="circuitNumber" javaType="java.lang.String" jdbcTypeCode="12" label="Circuit number" maxLength="100" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="now()" dbName="created_at" dbNotNull="false" dbPosition="3" dbSize="29" dbTypeName="timestamp" inputType="" javaName="createdAt" javaType="java.util.Date" jdbcTypeCode="93" label="Created at" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="true" dbName="is_active" dbNotNull="true" dbPosition="4" dbSize="1" dbTypeName="bool" inputType="checkbox" javaName="isActive" javaType="java.lang.Boolean" jdbcTypeCode="-7" label="Is active" notNull="true" selected="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_circuit_site_app_circuit_1" id="LINK_FK_fk_circuit_site_app_circuit_1_I" inverseSideOf="LINK_FK_fk_circuit_site_app_circuit_1_O" javaName="listOfCircuitSite" javaType="unused" joinTableName="" mappedBy="circuit" optional="" owningSide="false" sourceTableName="circuit" targetEntity="CircuitSite" targetTableName="circuit_site" used="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_ride_circuit_1" id="LINK_FK_fk_ride_circuit_1_I" inverseSideOf="LINK_FK_fk_ride_circuit_1_O" javaName="listOfRide" javaType="unused" joinTableName="" mappedBy="circuit" optional="" owningSide="false" sourceTableName="circuit" targetEntity="Ride" targetTableName="ride" used="true"/>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="CircuitSite" name="circuit_site" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="circuit_id" dbNotNull="true" dbPosition="2" dbSize="10" dbTypeName="int4" inputType="number" javaName="circuitId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Circuit id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="site_id" dbNotNull="true" dbPosition="3" dbSize="10" dbTypeName="int4" inputType="number" javaName="siteId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Site id" notNull="true" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="now()" dbName="created_at" dbNotNull="false" dbPosition="4" dbSize="29" dbTypeName="timestamp" inputType="" javaName="createdAt" javaType="java.util.Date" jdbcTypeCode="93" label="Created at" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="true" dbName="is_active" dbNotNull="true" dbPosition="5" dbSize="1" dbTypeName="bool" inputType="checkbox" javaName="isActive" javaType="java.lang.Boolean" jdbcTypeCode="-7" label="Is active" notNull="true" selected="true"/>
+            <fk name="fk_circuit_site_app_circuit_1">
+                <fkcol colname="circuit_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="circuit_site" tableref="circuit" updaterule="3"/>
+            </fk>
+            <fk name="fk_ride_circuit_site_1">
+                <fkcol colname="site_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="circuit_site" tableref="site" updaterule="3"/>
+            </fk>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_ride_circuit_site_1" id="LINK_FK_fk_ride_circuit_site_1_O" inverseSideOf="" javaName="site" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="circuit_site" targetEntity="Site" targetTableName="site" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="site_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_circuit_site_app_circuit_1" id="LINK_FK_fk_circuit_site_app_circuit_1_O" inverseSideOf="" javaName="circuit" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="circuit_site" targetEntity="Circuit" targetTableName="circuit" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="circuit_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="Databasechangelog" name="databasechangelog" schema="sample_tracker">
+            <column dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbSize="255" dbTypeName="varchar" inputType="text" javaName="id" javaType="java.lang.String" jdbcTypeCode="12" label="Id" maxLength="255" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="author" dbNotNull="true" dbPosition="2" dbSize="255" dbTypeName="varchar" inputType="text" javaName="author" javaType="java.lang.String" jdbcTypeCode="12" label="Author" maxLength="255" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="filename" dbNotNull="true" dbPosition="3" dbSize="255" dbTypeName="varchar" inputType="text" javaName="filename" javaType="java.lang.String" jdbcTypeCode="12" label="Filename" maxLength="255" notEmpty="true" notNull="true" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="dateexecuted" dbNotNull="true" dbPosition="4" dbSize="29" dbTypeName="timestamp" inputType="" javaName="dateexecuted" javaType="java.util.Date" jdbcTypeCode="93" label="Dateexecuted" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="orderexecuted" dbNotNull="true" dbPosition="5" dbSize="10" dbTypeName="int4" inputType="number" javaName="orderexecuted" javaType="java.lang.Integer" jdbcTypeCode="4" label="Orderexecuted" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="exectype" dbNotNull="true" dbPosition="6" dbSize="10" dbTypeName="varchar" inputType="text" javaName="exectype" javaType="java.lang.String" jdbcTypeCode="12" label="Exectype" maxLength="10" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="md5sum" dbNotNull="false" dbPosition="7" dbSize="35" dbTypeName="varchar" inputType="text" javaName="md5sum" javaType="java.lang.String" jdbcTypeCode="12" label="Md5sum" maxLength="35" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="description" dbNotNull="false" dbPosition="8" dbSize="255" dbTypeName="varchar" inputType="text" javaName="description" javaType="java.lang.String" jdbcTypeCode="12" label="Description" maxLength="255" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="comments" dbNotNull="false" dbPosition="9" dbSize="255" dbTypeName="varchar" inputType="text" javaName="comments" javaType="java.lang.String" jdbcTypeCode="12" label="Comments" maxLength="255" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="tag" dbNotNull="false" dbPosition="10" dbSize="255" dbTypeName="varchar" inputType="text" javaName="tag" javaType="java.lang.String" jdbcTypeCode="12" label="Tag" maxLength="255" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="liquibase" dbNotNull="false" dbPosition="11" dbSize="20" dbTypeName="varchar" inputType="text" javaName="liquibase" javaType="java.lang.String" jdbcTypeCode="12" label="Liquibase" maxLength="20" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="contexts" dbNotNull="false" dbPosition="12" dbSize="255" dbTypeName="varchar" inputType="text" javaName="contexts" javaType="java.lang.String" jdbcTypeCode="12" label="Contexts" maxLength="255" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="labels" dbNotNull="false" dbPosition="13" dbSize="255" dbTypeName="varchar" inputType="text" javaName="labels" javaType="java.lang.String" jdbcTypeCode="12" label="Labels" maxLength="255" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="deployment_id" dbNotNull="false" dbPosition="14" dbSize="10" dbTypeName="varchar" inputType="text" javaName="deploymentId" javaType="java.lang.String" jdbcTypeCode="12" label="Deployment id" maxLength="10" notNull="false" selected="true"/>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="Databasechangeloglock" name="databasechangeloglock" schema="sample_tracker">
+            <column dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="locked" dbNotNull="true" dbPosition="2" dbSize="1" dbTypeName="bool" inputType="checkbox" javaName="locked" javaType="java.lang.Boolean" jdbcTypeCode="-7" label="Locked" notNull="true" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="lockgranted" dbNotNull="false" dbPosition="3" dbSize="29" dbTypeName="timestamp" inputType="" javaName="lockgranted" javaType="java.util.Date" jdbcTypeCode="93" label="Lockgranted" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="lockedby" dbNotNull="false" dbPosition="4" dbSize="255" dbTypeName="varchar" inputType="text" javaName="lockedby" javaType="java.lang.String" jdbcTypeCode="12" label="Lockedby" maxLength="255" notNull="false" selected="true"/>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="District" name="district" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="true" dbPosition="2" dbSize="100" dbTypeName="varchar" inputType="text" javaName="name" javaType="java.lang.String" jdbcTypeCode="12" label="Name" maxLength="100" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="region_id" dbNotNull="false" dbPosition="3" dbSize="10" dbTypeName="int4" inputType="number" javaName="regionId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Region id" notNull="false" selected="true"/>
+            <fk name="fk_district_region_1">
+                <fkcol colname="region_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="district" tableref="region" updaterule="3"/>
+            </fk>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_site_district_1" id="LINK_FK_fk_site_district_1_I" inverseSideOf="LINK_FK_fk_site_district_1_O" javaName="listOfSite" javaType="unused" joinTableName="" mappedBy="district" optional="" owningSide="false" sourceTableName="district" targetEntity="Site" targetTableName="site" used="true"/>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_district_region_1" id="LINK_FK_fk_district_region_1_O" inverseSideOf="" javaName="region" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="district" targetEntity="Region" targetTableName="region" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="region_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_lab_district_1" id="LINK_FK_fk_lab_district_1_I" inverseSideOf="LINK_FK_fk_lab_district_1_O" javaName="listOfLab" javaType="unused" joinTableName="" mappedBy="district" optional="" owningSide="false" sourceTableName="district" targetEntity="Lab" targetTableName="lab" used="true"/>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="Lab" name="lab" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="lab_name" dbNotNull="true" dbPosition="2" dbSize="100" dbTypeName="varchar" inputType="text" javaName="labName" javaType="java.lang.String" jdbcTypeCode="12" label="Lab name" maxLength="100" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="lab_phone" dbNotNull="false" dbPosition="3" dbSize="50" dbTypeName="varchar" inputType="text" javaName="labPhone" javaType="java.lang.String" jdbcTypeCode="12" label="Lab phone" maxLength="50" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="lab_mail" dbNotNull="false" dbPosition="4" dbSize="50" dbTypeName="varchar" inputType="text" javaName="labMail" javaType="java.lang.String" jdbcTypeCode="12" label="Lab mail" maxLength="50" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="lab_type" dbNotNull="true" dbPosition="5" dbSize="100" dbTypeName="varchar" inputType="text" javaName="labType" javaType="java.lang.String" jdbcTypeCode="12" label="Lab type" maxLength="100" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="district_id" dbNotNull="false" dbPosition="6" dbSize="10" dbTypeName="int4" inputType="number" javaName="districtId" javaType="java.lang.Integer" jdbcTypeCode="4" label="District id" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="longitude" dbNotNull="false" dbPosition="7" dbSize="17" dbTypeName="float8" inputType="number" javaName="longitude" javaType="java.lang.Double" jdbcTypeCode="8" label="Longitude" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="latitude" dbNotNull="false" dbPosition="8" dbSize="17" dbTypeName="float8" inputType="number" javaName="latitude" javaType="java.lang.Double" jdbcTypeCode="8" label="Latitude" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="created_at" dbNotNull="true" dbPosition="9" dbSize="29" dbTypeName="timestamp" inputType="" javaName="createdAt" javaType="java.util.Date" jdbcTypeCode="93" label="Created at" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="true" dbName="is_active" dbNotNull="true" dbPosition="10" dbSize="1" dbTypeName="bool" inputType="checkbox" javaName="isActive" javaType="java.lang.Boolean" jdbcTypeCode="-7" label="Is active" notNull="true" selected="true"/>
+            <fk name="fk_lab_district_1">
+                <fkcol colname="district_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="lab" tableref="district" updaterule="3"/>
+            </fk>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_lab_1" id="LINK_FK_fk_sample_lab_1_I" inverseSideOf="LINK_FK_fk_sample_lab_1_O" javaName="listOfSampleAtLab" javaType="unused" joinTableName="" mappedBy="lab" optional="" owningSide="false" sourceTableName="lab" targetEntity="SampleAtLab" targetTableName="sample_at_lab" used="true"/>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_lab_district_1" id="LINK_FK_fk_lab_district_1_O" inverseSideOf="" javaName="district" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="lab" targetEntity="District" targetTableName="district" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="district_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="Region" name="region" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="true" dbPosition="2" dbSize="100" dbTypeName="varchar" inputType="text" javaName="name" javaType="java.lang.String" jdbcTypeCode="12" label="Name" maxLength="100" notEmpty="true" notNull="true" selected="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_district_region_1" id="LINK_FK_fk_district_region_1_I" inverseSideOf="LINK_FK_fk_district_region_1_O" javaName="listOfDistrict" javaType="unused" joinTableName="" mappedBy="region" optional="" owningSide="false" sourceTableName="region" targetEntity="District" targetTableName="district" used="true"/>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="Ride" name="ride" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="app_user_id" dbNotNull="true" dbPosition="2" dbSize="10" dbTypeName="int4" inputType="number" javaName="appUserId" javaType="java.lang.Integer" jdbcTypeCode="4" label="App user id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="circuit_id" dbNotNull="true" dbPosition="3" dbSize="10" dbTypeName="int4" inputType="number" javaName="circuitId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Circuit id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="ride_number" dbNotNull="false" dbPosition="4" dbSize="100" dbTypeName="varchar" inputType="text" javaName="rideNumber" javaType="java.lang.String" jdbcTypeCode="12" label="Ride number" maxLength="100" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="start_date" dbNotNull="true" dbPosition="5" dbSize="29" dbTypeName="timestamp" inputType="" javaName="startDate" javaType="java.util.Date" jdbcTypeCode="93" label="Start date" notNull="true" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="end_date" dbNotNull="false" dbPosition="6" dbSize="29" dbTypeName="timestamp" inputType="" javaName="endDate" javaType="java.util.Date" jdbcTypeCode="93" label="End date" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="start_mileage" dbNotNull="false" dbPosition="7" dbSize="10" dbTypeName="int4" inputType="number" javaName="startMileage" javaType="java.lang.Integer" jdbcTypeCode="4" label="Start mileage" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="end_mileage" dbNotNull="false" dbPosition="8" dbSize="10" dbTypeName="int4" inputType="number" javaName="endMileage" javaType="java.lang.Integer" jdbcTypeCode="4" label="End mileage" notNull="false" selected="true"/>
+            <fk name="fk_ride_app_user_1">
+                <fkcol colname="app_user_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="ride" tableref="app_user" updaterule="3"/>
+            </fk>
+            <fk name="fk_ride_circuit_1">
+                <fkcol colname="circuit_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="ride" tableref="circuit" updaterule="3"/>
+            </fk>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_ride_circuit_1" id="LINK_FK_fk_ride_circuit_1_O" inverseSideOf="" javaName="circuit" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="ride" targetEntity="Circuit" targetTableName="circuit" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="circuit_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_ride_app_user_1" id="LINK_FK_fk_ride_app_user_1_O" inverseSideOf="" javaName="appUser" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="ride" targetEntity="AppUser" targetTableName="app_user" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="app_user_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_collection_ride_1" id="LINK_FK_fk_sample_collection_ride_1_I" inverseSideOf="LINK_FK_fk_sample_collection_ride_1_O" javaName="listOfSampleRetrieving" javaType="unused" joinTableName="" mappedBy="ride" optional="" owningSide="false" sourceTableName="ride" targetEntity="SampleRetrieving" targetTableName="sample_retrieving" used="true"/>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="Sample" name="sample" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="sample_type_id" dbNotNull="true" dbPosition="2" dbSize="10" dbTypeName="int4" inputType="number" javaName="sampleTypeId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Sample type id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="sample_status_id" dbNotNull="true" dbPosition="3" dbSize="10" dbTypeName="int4" inputType="number" javaName="sampleStatusId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Sample status id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="sample_package_id" dbNotNull="true" dbPosition="4" dbSize="10" dbTypeName="int4" inputType="number" javaName="samplePackageId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Sample package id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="sample_retrieving_id" dbNotNull="true" dbPosition="5" dbSize="10" dbTypeName="int4" inputType="number" javaName="sampleRetrievingId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Sample retrieving id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="sample_identifier" dbNotNull="false" dbPosition="6" dbSize="50" dbTypeName="varchar" inputType="text" javaName="sampleIdentifier" javaType="java.lang.String" jdbcTypeCode="12" label="Sample identifier" maxLength="50" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="patient_identifier" dbNotNull="true" dbPosition="7" dbSize="50" dbTypeName="varchar" inputType="text" javaName="patientIdentifier" javaType="java.lang.String" jdbcTypeCode="12" label="Patient identifier" maxLength="50" notEmpty="true" notNull="true" selected="true"/>
+            <column dateType="D" dbComment="" dbDefaultValue="" dbName="collection_date" dbNotNull="true" dbPosition="8" dbSize="13" dbTypeName="date" inputType="date" javaName="collectionDate" javaType="java.util.Date" jdbcTypeCode="91" label="Collection date" notNull="true" selected="true"/>
+            <column dateType="T" dbComment="" dbDefaultValue="" dbName="collection_time" dbNotNull="true" dbPosition="9" dbSize="15" dbTypeName="time" inputType="time" javaName="collectionTime" javaType="java.util.Date" jdbcTypeCode="92" label="Collection time" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="lab_number" dbNotNull="false" dbPosition="10" dbSize="100" dbTypeName="varchar" inputType="text" javaName="labNumber" javaType="java.lang.String" jdbcTypeCode="12" label="Lab number" maxLength="100" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="created_at" dbNotNull="true" dbPosition="11" dbSize="29" dbTypeName="timestamp" inputType="" javaName="createdAt" javaType="java.util.Date" jdbcTypeCode="93" label="Created at" notNull="true" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="lastupdated_at" dbNotNull="true" dbPosition="12" dbSize="29" dbTypeName="timestamp" inputType="" javaName="lastupdatedAt" javaType="java.util.Date" jdbcTypeCode="93" label="Lastupdated at" notNull="true" selected="true"/>
+            <fk name="fk_sample_sample_package_1">
+                <fkcol colname="sample_package_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="sample" tableref="sample_package" updaterule="3"/>
+            </fk>
+            <fk name="fk_sample_sample_retrieving_1">
+                <fkcol colname="sample_retrieving_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="sample" tableref="sample_retrieving" updaterule="3"/>
+            </fk>
+            <fk name="fk_sample_sample_status_1">
+                <fkcol colname="sample_status_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="sample" tableref="sample_status" updaterule="3"/>
+            </fk>
+            <fk name="fk_sample_sample_type_1">
+                <fkcol colname="sample_type_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="sample" tableref="sample_type" updaterule="3"/>
+            </fk>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_sample_retrieving_1" id="LINK_FK_fk_sample_sample_retrieving_1_O" inverseSideOf="" javaName="sampleRetrieving" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="sample" targetEntity="SampleRetrieving" targetTableName="sample_retrieving" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="sample_retrieving_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_sample_package_1" id="LINK_FK_fk_sample_sample_package_1_O" inverseSideOf="" javaName="samplePackage" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="sample" targetEntity="SamplePackage" targetTableName="sample_package" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="sample_package_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_tracking_event_sample_1" id="LINK_FK_fk_tracking_event_sample_1_I" inverseSideOf="LINK_FK_fk_tracking_event_sample_1_O" javaName="listOfTrackingEvent" javaType="unused" joinTableName="" mappedBy="sample" optional="" owningSide="false" sourceTableName="sample" targetEntity="TrackingEvent" targetTableName="tracking_event" used="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_at_lab_sample_1" id="LINK_FK_fk_sample_at_lab_sample_1_I" inverseSideOf="LINK_FK_fk_sample_at_lab_sample_1_O" javaName="listOfSampleAtLab" javaType="unused" joinTableName="" mappedBy="sample" optional="" owningSide="false" sourceTableName="sample" targetEntity="SampleAtLab" targetTableName="sample_at_lab" used="true"/>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_sample_type_1" id="LINK_FK_fk_sample_sample_type_1_O" inverseSideOf="" javaName="sampleType" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="sample" targetEntity="SampleType" targetTableName="sample_type" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="sample_type_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="SampleAtLab" name="sample_at_lab" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="sample_id" dbNotNull="true" dbPosition="2" dbSize="10" dbTypeName="int4" inputType="number" javaName="sampleId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Sample id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="sample_status_id" dbNotNull="true" dbPosition="3" dbSize="10" dbTypeName="int4" inputType="number" javaName="sampleStatusId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Sample status id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="lab_id" dbNotNull="true" dbPosition="4" dbSize="10" dbTypeName="int4" inputType="number" javaName="labId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Lab id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="lab_number" dbNotNull="false" dbPosition="5" dbSize="100" dbTypeName="varchar" inputType="text" javaName="labNumber" javaType="java.lang.String" jdbcTypeCode="12" label="Lab number" maxLength="100" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="received_date" dbNotNull="false" dbPosition="6" dbSize="29" dbTypeName="timestamp" inputType="" javaName="receivedDate" javaType="java.util.Date" jdbcTypeCode="93" label="Received date" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="started_date" dbNotNull="false" dbPosition="7" dbSize="29" dbTypeName="timestamp" inputType="" javaName="startedDate" javaType="java.util.Date" jdbcTypeCode="93" label="Started date" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="completed_date" dbNotNull="false" dbPosition="8" dbSize="29" dbTypeName="timestamp" inputType="" javaName="completedDate" javaType="java.util.Date" jdbcTypeCode="93" label="Completed date" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="released_date" dbNotNull="false" dbPosition="9" dbSize="29" dbTypeName="timestamp" inputType="" javaName="releasedDate" javaType="java.util.Date" jdbcTypeCode="93" label="Released date" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="result_collect_date" dbNotNull="false" dbPosition="10" dbSize="29" dbTypeName="timestamp" inputType="" javaName="resultCollectDate" javaType="java.util.Date" jdbcTypeCode="93" label="Result collect date" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="created_at" dbNotNull="true" dbPosition="11" dbSize="29" dbTypeName="timestamp" inputType="" javaName="createdAt" javaType="java.util.Date" jdbcTypeCode="93" label="Created at" notNull="true" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="lastupdated_at" dbNotNull="true" dbPosition="12" dbSize="29" dbTypeName="timestamp" inputType="" javaName="lastupdatedAt" javaType="java.util.Date" jdbcTypeCode="93" label="Lastupdated at" notNull="true" selected="true"/>
+            <fk name="fk_sample_at_lab_sample_1">
+                <fkcol colname="sample_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="sample_at_lab" tableref="sample" updaterule="3"/>
+            </fk>
+            <fk name="fk_sample_lab_1">
+                <fkcol colname="lab_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="sample_at_lab" tableref="lab" updaterule="3"/>
+            </fk>
+            <fk name="fk_sample_sample_status_1">
+                <fkcol colname="sample_status_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="sample_at_lab" tableref="sample_status" updaterule="3"/>
+            </fk>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_lab_1" id="LINK_FK_fk_sample_lab_1_O" inverseSideOf="" javaName="lab" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="sample_at_lab" targetEntity="Lab" targetTableName="lab" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="lab_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_sample_status_1" id="LINK_FK_fk_sample_sample_status_1_O" inverseSideOf="" javaName="sampleStatus" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="sample_at_lab" targetEntity="SampleStatus" targetTableName="sample_status" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="sample_status_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_at_lab_sample_1" id="LINK_FK_fk_sample_at_lab_sample_1_O" inverseSideOf="" javaName="sample" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="sample_at_lab" targetEntity="Sample" targetTableName="sample" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="sample_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="SamplePackage" name="sample_package" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="package_number" dbNotNull="true" dbPosition="2" dbSize="100" dbTypeName="varchar" inputType="text" javaName="packageNumber" javaType="java.lang.String" jdbcTypeCode="12" label="Package number" maxLength="100" notEmpty="true" notNull="true" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="created_at" dbNotNull="true" dbPosition="3" dbSize="29" dbTypeName="timestamp" inputType="" javaName="createdAt" javaType="java.util.Date" jdbcTypeCode="93" label="Created at" notNull="true" selected="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_sample_package_1" id="LINK_FK_fk_sample_sample_package_1_I" inverseSideOf="LINK_FK_fk_sample_sample_package_1_O" javaName="listOfSample" javaType="unused" joinTableName="" mappedBy="samplePackage" optional="" owningSide="false" sourceTableName="sample_package" targetEntity="Sample" targetTableName="sample" used="true"/>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="SampleRejection" name="sample_rejection" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="sample_rejection_type_id" dbNotNull="true" dbPosition="2" dbSize="10" dbTypeName="int4" inputType="number" javaName="sampleRejectionTypeId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Sample rejection type id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="comment" dbNotNull="false" dbPosition="3" dbSize="255" dbTypeName="varchar" inputType="text" javaName="comment" javaType="java.lang.String" jdbcTypeCode="12" label="Comment" maxLength="255" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="created_at" dbNotNull="true" dbPosition="4" dbSize="29" dbTypeName="timestamp" inputType="" javaName="createdAt" javaType="java.util.Date" jdbcTypeCode="93" label="Created at" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="true" dbName="is_active" dbNotNull="true" dbPosition="5" dbSize="1" dbTypeName="bool" inputType="checkbox" javaName="isActive" javaType="java.lang.Boolean" jdbcTypeCode="-7" label="Is active" notNull="true" selected="true"/>
+            <fk name="fk_sample_rejection_type_sample_rejection_1">
+                <fkcol colname="sample_rejection_type_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="sample_rejection" tableref="sample_rejection_type" updaterule="3"/>
+            </fk>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_rejection_type_sample_rejection_1" id="LINK_FK_fk_sample_rejection_type_sample_rejection_1_O" inverseSideOf="" javaName="sampleRejectionType" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="sample_rejection" targetEntity="SampleRejectionType" targetTableName="sample_rejection_type" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="sample_rejection_type_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="SampleRejectionType" name="sample_rejection_type" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="rejection_type" dbNotNull="true" dbPosition="2" dbSize="255" dbTypeName="varchar" inputType="text" javaName="rejectionType" javaType="java.lang.String" jdbcTypeCode="12" label="Rejection type" maxLength="255" notEmpty="true" notNull="true" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="created_at" dbNotNull="true" dbPosition="3" dbSize="29" dbTypeName="timestamp" inputType="" javaName="createdAt" javaType="java.util.Date" jdbcTypeCode="93" label="Created at" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="true" dbName="is_active" dbNotNull="true" dbPosition="4" dbSize="1" dbTypeName="bool" inputType="checkbox" javaName="isActive" javaType="java.lang.Boolean" jdbcTypeCode="-7" label="Is active" notNull="true" selected="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_rejection_type_sample_rejection_1" id="LINK_FK_fk_sample_rejection_type_sample_rejection_1_I" inverseSideOf="LINK_FK_fk_sample_rejection_type_sample_rejection_1_O" javaName="listOfSampleRejection" javaType="unused" joinTableName="" mappedBy="sampleRejectionType" optional="" owningSide="false" sourceTableName="sample_rejection_type" targetEntity="SampleRejection" targetTableName="sample_rejection" used="true"/>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="SampleRetrieving" name="sample_retrieving" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="ride_id" dbNotNull="true" dbPosition="2" dbSize="10" dbTypeName="int4" inputType="number" javaName="rideId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Ride id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="site_id" dbNotNull="true" dbPosition="3" dbSize="10" dbTypeName="int4" inputType="number" javaName="siteId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Site id" notNull="true" selected="true"/>
+            <column dateType="D" dbComment="" dbDefaultValue="" dbName="sample_retrieve_date" dbNotNull="true" dbPosition="4" dbSize="13" dbTypeName="date" inputType="date" javaName="sampleRetrieveDate" javaType="java.util.Date" jdbcTypeCode="91" label="Sample retrieve date" notNull="true" selected="true"/>
+            <column dateType="T" dbComment="" dbDefaultValue="" dbName="sample_retrieve_time" dbNotNull="true" dbPosition="5" dbSize="15" dbTypeName="time" inputType="time" javaName="sampleRetrieveTime" javaType="java.util.Date" jdbcTypeCode="92" label="Sample retrieve time" notNull="true" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="entered_date" dbNotNull="true" dbPosition="6" dbSize="29" dbTypeName="timestamp" inputType="" javaName="enteredDate" javaType="java.util.Date" jdbcTypeCode="93" label="Entered date" notNull="true" selected="true"/>
+            <fk name="fk_sample_collection_ride_1">
+                <fkcol colname="ride_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="sample_retrieving" tableref="ride" updaterule="3"/>
+            </fk>
+            <fk name="fk_sample_collection_site_1">
+                <fkcol colname="site_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="sample_retrieving" tableref="site" updaterule="3"/>
+            </fk>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_collection_ride_1" id="LINK_FK_fk_sample_collection_ride_1_O" inverseSideOf="" javaName="ride" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="sample_retrieving" targetEntity="Ride" targetTableName="ride" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="ride_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_collection_site_1" id="LINK_FK_fk_sample_collection_site_1_O" inverseSideOf="" javaName="site" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="sample_retrieving" targetEntity="Site" targetTableName="site" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="site_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_sample_retrieving_1" id="LINK_FK_fk_sample_sample_retrieving_1_I" inverseSideOf="LINK_FK_fk_sample_sample_retrieving_1_O" javaName="listOfSample" javaType="unused" joinTableName="" mappedBy="sampleRetrieving" optional="" owningSide="false" sourceTableName="sample_retrieving" targetEntity="Sample" targetTableName="sample" used="true"/>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="SampleStatus" name="sample_status" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="status" dbNotNull="true" dbPosition="2" dbSize="50" dbTypeName="varchar" inputType="text" javaName="status" javaType="java.lang.String" jdbcTypeCode="12" label="Status" maxLength="50" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="description" dbNotNull="false" dbPosition="3" dbSize="100" dbTypeName="varchar" inputType="text" javaName="description" javaType="java.lang.String" jdbcTypeCode="12" label="Description" maxLength="100" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="created_at" dbNotNull="true" dbPosition="4" dbSize="29" dbTypeName="timestamp" inputType="" javaName="createdAt" javaType="java.util.Date" jdbcTypeCode="93" label="Created at" notNull="true" selected="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_sample_status_1" id="LINK_FK_fk_sample_sample_status_1_I" inverseSideOf="LINK_FK_fk_sample_sample_status_1_O" javaName="listOfSampleAtLab" javaType="unused" joinTableName="" mappedBy="sampleStatus" optional="" owningSide="false" sourceTableName="sample_status" targetEntity="SampleAtLab" targetTableName="sample_at_lab" used="true"/>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="SampleType" name="sample_type" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="true" dbPosition="2" dbSize="50" dbTypeName="varchar" inputType="text" javaName="name" javaType="java.lang.String" jdbcTypeCode="12" label="Name" maxLength="50" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="description" dbNotNull="false" dbPosition="3" dbSize="100" dbTypeName="varchar" inputType="text" javaName="description" javaType="java.lang.String" jdbcTypeCode="12" label="Description" maxLength="100" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="created_at" dbNotNull="true" dbPosition="4" dbSize="29" dbTypeName="timestamp" inputType="" javaName="createdAt" javaType="java.util.Date" jdbcTypeCode="93" label="Created at" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="true" dbName="is_active" dbNotNull="true" dbPosition="5" dbSize="1" dbTypeName="bool" inputType="checkbox" javaName="isActive" javaType="java.lang.Boolean" jdbcTypeCode="-7" label="Is active" notNull="true" selected="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_sample_type_1" id="LINK_FK_fk_sample_sample_type_1_I" inverseSideOf="LINK_FK_fk_sample_sample_type_1_O" javaName="listOfSample" javaType="unused" joinTableName="" mappedBy="sampleType" optional="" owningSide="false" sourceTableName="sample_type" targetEntity="Sample" targetTableName="sample" used="true"/>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="Site" name="site" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="true" dbPosition="2" dbSize="200" dbTypeName="varchar" inputType="text" javaName="name" javaType="java.lang.String" jdbcTypeCode="12" label="Name" maxLength="200" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="dhis_code" dbNotNull="true" dbPosition="3" dbSize="10" dbTypeName="varchar" inputType="text" javaName="dhisCode" javaType="java.lang.String" jdbcTypeCode="12" label="Dhis code" maxLength="10" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="datim_code" dbNotNull="false" dbPosition="4" dbSize="20" dbTypeName="varchar" inputType="text" javaName="datimCode" javaType="java.lang.String" jdbcTypeCode="12" label="Datim code" maxLength="20" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="district_id" dbNotNull="false" dbPosition="5" dbSize="10" dbTypeName="int4" inputType="number" javaName="districtId" javaType="java.lang.Integer" jdbcTypeCode="4" label="District id" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="longitude" dbNotNull="false" dbPosition="6" dbSize="17" dbTypeName="float8" inputType="number" javaName="longitude" javaType="java.lang.Double" jdbcTypeCode="8" label="Longitude" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="latitude" dbNotNull="false" dbPosition="7" dbSize="17" dbTypeName="float8" inputType="number" javaName="latitude" javaType="java.lang.Double" jdbcTypeCode="8" label="Latitude" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="last_updated_at" dbNotNull="false" dbPosition="8" dbSize="29" dbTypeName="timestamp" inputType="" javaName="lastUpdatedAt" javaType="java.util.Date" jdbcTypeCode="93" label="Last updated at" notNull="false" selected="true"/>
+            <fk name="fk_site_district_1">
+                <fkcol colname="district_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="site" tableref="district" updaterule="3"/>
+            </fk>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_sample_collection_site_1" id="LINK_FK_fk_sample_collection_site_1_I" inverseSideOf="LINK_FK_fk_sample_collection_site_1_O" javaName="listOfSampleRetrieving" javaType="unused" joinTableName="" mappedBy="site" optional="" owningSide="false" sourceTableName="site" targetEntity="SampleRetrieving" targetTableName="sample_retrieving" used="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="fk_ride_circuit_site_1" id="LINK_FK_fk_ride_circuit_site_1_I" inverseSideOf="LINK_FK_fk_ride_circuit_site_1_O" javaName="listOfCircuitSite" javaType="unused" joinTableName="" mappedBy="site" optional="" owningSide="false" sourceTableName="site" targetEntity="CircuitSite" targetTableName="circuit_site" used="true"/>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_site_district_1" id="LINK_FK_fk_site_district_1_O" inverseSideOf="" javaName="district" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="site" targetEntity="District" targetTableName="district" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="district_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+        </table>
+        <table catalog="" databaseComment="" databaseType="TABLE" javaBean="TrackingEvent" name="tracking_event" schema="sample_tracker">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int4" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="sample_id" dbNotNull="true" dbPosition="2" dbSize="10" dbTypeName="int4" inputType="number" javaName="sampleId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Sample id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="longitude" dbNotNull="false" dbPosition="3" dbSize="17" dbTypeName="float8" inputType="number" javaName="longitude" javaType="java.lang.Double" jdbcTypeCode="8" label="Longitude" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="latitude" dbNotNull="false" dbPosition="4" dbSize="17" dbTypeName="float8" inputType="number" javaName="latitude" javaType="java.lang.Double" jdbcTypeCode="8" label="Latitude" notNull="false" selected="true"/>
+            <column dateType="DT" dbComment="" dbDefaultValue="" dbName="created_at" dbNotNull="true" dbPosition="5" dbSize="29" dbTypeName="timestamp" inputType="" javaName="createdAt" javaType="java.util.Date" jdbcTypeCode="93" label="Created at" notNull="true" selected="true"/>
+            <fk name="fk_tracking_event_sample_1">
+                <fkcol colname="sample_id" colref="id" deferrable="7" deleterule="3" sequence="1" tablename="tracking_event" tableref="sample" updaterule="3"/>
+            </fk>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="fk_tracking_event_sample_1" id="LINK_FK_fk_tracking_event_sample_1_O" inverseSideOf="" javaName="sample" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="tracking_event" targetEntity="Sample" targetTableName="sample" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="sample_id" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+        </table>
+    </tableList>
+</root>

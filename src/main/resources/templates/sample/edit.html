@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="~{fragments/header :: head}">
+</head>
+<body class="sb-nav-fixed">
+	<div class="d-flex" id="wrapper">
+		<div id="page-content-wrapper">
+			<div
+				th:insert="~{fragments/header :: header(content='Modifier un échantillon', module='sample')}"></div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="m-2">
+						<div class="card mb-4 mt-2">
+							<div class="card-header">
+								<i class="fas fa-plus-square"></i> &nbsp;Modifier un échantillon
+								<a th:href="@{/sample}" class="btn btn-sm btn-success float-end">
+									Retour à la liste des échantillon <i class="fas fa-backward"></i>
+								</a>
+							</div>
+							<div class="card-body col-lg-8 col-md-8">
+								<div class="all-form-element-inner">
+									<form th:object="${sample}"
+										th:action="@{'/sample/update/'+${sample?.id}}" method="post"
+										class="form-horizontal">
+										<p class="error text-danger" th:if="${message_error != null}"
+											th:text="${message_error}"></p>
+										<p class="error text-success"
+											th:if="${message_success != null}"
+											th:text="${message_success}"></p>
+										<input type="hidden" th:value="*{id}" />
+
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="selectSite" class="form-label"> Site de
+													demande : </label>
+											</div>
+											<div class="col-md-8">
+												<select class="form-select" disabled="disabled" id="siteId" th:field="*{requesterSiteId}">
+													<option value=""></option>
+													<option th:each="site : ${sites}" th:value="${site.id}"
+														th:text="${site.name}"></option>
+												</select> <input type="hidden" readonly="readonly"
+													th:field="*{requesterSiteId}">
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="collectionStartMileage" class="control-label">Kilométrage
+													début collecte échantillon:</label>
+											</div>
+											<div class="col-md-8">
+												<input type="number" th:field="*{collectionStartMileage}"
+													class="form-control" id="collectionStartMileage"
+													placeholder="Collection Start Mileage" />
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="collectionEndMileage" class="control-label">Kilométrage
+													fin collecte échantillon:</label>
+											</div>
+											<div class="col-md-8">
+												<input type="number" th:field="*{collectionEndMileage}"
+													class="form-control" id="collectionEndMileage"
+													placeholder="Collection End Mileage" />
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="patientIdentifier"
+													class="col-md-4 control-label"> Code du Patient:</label>
+											</div>
+											<div class="col-md-8">
+												<input type="text" th:field="*{patientIdentifier}"
+													class="form-control" id="patientIdentifier"
+													placeholder="Code du Patient" required maxlength="50" />
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="sampleTypeId" class="control-label">
+													Type d'échantillon: </label>
+											</div>
+											<div class="col-auto col-md-8">
+												<select class="form-select" th:field="*{sampleTypeId}"
+													id="sampleTypeId">
+													<option value=""></option>
+													<option th:each="sampleType : ${sampleTypes}"
+														th:value="${sampleType.id}" th:text="${sampleType.name}"></option>
+												</select>
+											</div>
+										</div>
+
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="collectionDate" class="col-sm-5 control-label">Date
+													de prélèvement: </label>
+											</div>
+											<div class="col-md-8">
+												<div class="input-group date" id="collectionDatePicker">
+													<input type="datetime-local" th:field="*{collectionDate}"
+														class="form-control datetimepicker-input"
+														data-target="#collectionDatePicker" />
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="destinationLabId" class=" control-label">
+													Destination: </label>
+											</div>
+											<div class="col-auto col-md-8">
+												<select class="form-select" th:field="*{destinationLabId}"
+													id="destinationLabId">
+													<option value=""></option>
+													<option th:each="lab : ${labs}" th:value="${lab.id}"
+														th:text="${lab.name}"></option>
+												</select>
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="selectLab" class="control-label">
+													Laboratoire ayant accepté l'échantillon: </label>
+											</div>
+											<div class="col-auto col-md-8">
+												<select class="form-select" th:field="*{labId}" id="LabId">
+													<option value=""></option>
+													<option th:each="lab : ${labs}" th:value="${lab.id}"
+														th:text="${lab.name}"></option>
+												</select>
+											</div>
+										</div>
+
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="selectSite" class="control-label">
+													Status de l'échantillon: </label>
+											</div>
+											<div class="col-auto col-md-8">
+												<select class="form-select" th:field="*{sampleStatusId}"
+													id="sampleStatusId">
+													<option value=""></option>
+													<option th:each="status : ${sampleStatus}"
+														th:value="${status.id}" th:text="${status.description}"></option>
+												</select>
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="rejectionTypeId" class="control-label">
+													Raison du rejet de l'échantillon: </label>
+											</div>
+											<div class="col-auto col-md-8">
+												<select class="form-select" th:field="*{rejectionTypeId}"
+													id="rejectionTypeId">
+													<option value=""></option>
+													<option th:each="rejectionType : ${sampleRejectionTypes}"
+														th:value="${rejectionType.id}"
+														th:text="${rejectionType.rejectionType}"></option>
+												</select>
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="rejectionComment" class="col-md-4 control-label">
+													Commentaire sur le rejet:</label>
+											</div>
+											<div class="col-md-8">
+												<input type="text" th:field="*{rejectionComment}"
+													class="form-control" id="rejectionComment"
+													placeholder="Commentaire sur le rejet" maxlength="50" />
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="deliverAtHubDate" class="control-label">Date
+													de transmission au labo relais: </label>
+											</div>
+											<div class="col-md-8">
+												<div class="input-group date" id="deliverAtHubDatePicker">
+													<input type="datetime-local" th:field="*{deliverAtHubDate}"
+														class="form-control datetimepicker-input"
+														data-target="#deliverAtHubDatePicker" />
+												</div>
+											</div>
+										</div>
+
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="collectionDate" class="control-label">
+													Date de rejet: </label>
+											</div>
+											<div class="col-md-8">
+												<div class="input-group date" id="rejectionDatePicker">
+													<input type="datetime-local" th:field="*{rejectionDate}"
+														class="form-control datetimepicker-input"
+														data-target="#rejectionDatePicker" />
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="deliverAtLabDate" class="control-label">
+													Date de transmission au laboratoire final:</label>
+											</div>
+											<div class="col-md-8">
+												<div class="input-group date" id="deliverAtLabDatePicker">
+													<input type="datetime-local" th:field="*{deliverAtLabDate}"
+														class="form-control datetimepicker-input"
+														data-target="#deliverAtLabDatePicker" />
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="acceptedAtHubDate" class="control-label">Date
+													de réception au laboratoire relais: </label>
+											</div>
+											<div class="col-md-8">
+												<div class="input-group date" id="acceptedAtHubDatePicker">
+													<input type="datetime-local"
+														th:field="*{acceptedAtHubDate}"
+														class="form-control datetimepicker-input" />
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="acceptedAtLabDate" class="control-label">Date
+													de réception au laboratoire final:</label>
+											</div>
+											<div class="col-md-8">
+												<div class="input-group date" id="acceptedAtLabDatePicker">
+													<input type="datetime-local"
+														th:field="*{acceptedAtLabDate}"
+														class="form-control datetimepicker-input"
+														data-target="#acceptedAtLabDatePicker" />
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="analysisCompletedDate" class="control-label">Date
+													de réalisation des tests:</label>
+											</div>
+											<div class="col-md-8">
+												<div class="input-group date"
+													id="analysisCompletedDatePicker">
+													<input type="datetime-local"
+														th:field="*{analysisCompletedDate}"
+														class="form-control datetimepicker-input"
+														data-target="#analysisCompletedDatePicker" />
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="analysisReleasedDate" class="control-label">Date
+													de validation biologique des tests:</label>
+											</div>
+											<div class="col-md-8">
+												<div class="input-group date"
+													id="analysisReleasedDatePicker">
+													<input type="datetime-local"
+														th:field="*{analysisReleasedDate}"
+														class="form-control datetimepicker-input"
+														data-target="#analysisReleasedDatePicker" />
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="resultReportedDate" class="control-label">Date
+													de disponibilité des résultat: </label>
+											</div>
+											<div class="col-md-8">
+												<div class="input-group date" id="resultReportedDatePicker">
+													<input type="datetime-local"
+														th:field="*{resultReportedDate}"
+														class="form-control datetimepicker-input"
+														data-target="#resultReportedDatePicker" />
+												</div>
+											</div>
+										</div>
+
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="resultStartMileage" class="control-label">Kilométrage
+													début collecte de résultat:</label>
+											</div>
+											<div class="col-md-8">
+												<input type="number" th:field="*{resultStartMileage}"
+													class="form-control" id="resultStartMileage"
+													placeholder="Result Start Mileage" />
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="resultCollectionDate" class="control-label">Date
+													de récupération des résultats:</label>
+											</div>
+											<div class="col-md-8">
+												<div class="input-group date"
+													id="resultCollectionDatePicker">
+													<input type="datetime-local"
+														th:field="*{resultCollectionDate}"
+														class="form-control datetimepicker-input"
+														data-target="#resultCollectionDatePicker" />
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="resultDeliveryDate" class="control-label">Date
+													de transmission des résultats: </label>
+											</div>
+											<div class="col-md-8">
+												<div class="input-group date" id="resultDeliveryDatePicker">
+													<input type="datetime-local"
+														th:field="*{resultDeliveryDate}"
+														class="form-control datetimepicker-input"
+														data-target="#resultDeliveryDatePicker" />
+												</div>
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="resultEndMileage" class="control-label">Kilométrage
+													fin collecte résultat:</label>
+											</div>
+											<div class="col-md-8">
+												<input type="number" th:field="*{resultEndMileage}"
+													class="form-control" id="resultEndMileage"
+													placeholder="Result End Mileage" />
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="createdAt" class="control-label">Date de
+													création: </label>
+											</div>
+											<div class="col-md-8">
+												<input type="datetime-local" th:field="*{createdAt}"
+													class="form-control" id="createdAt"
+													placeholder="Created At" readonly />
+											</div>
+										</div>
+										<div class="row mb-3 g-3 align-items-center">
+											<div class="col-auto col-md-4">
+												<label for="lastupdatedAt" class="control-label">Date
+													de dernière mise à jour:</label>
+											</div>
+											<div class="col-md-8">
+												<input type="datetime-local" th:field="*{lastupdatedAt}"
+													class="form-control" id="lastupdatedAt"
+													placeholder="Last Updated At" readonly />
+											</div>
+										</div>
+
+										<button type="submit" class="btn btn-warning">
+											Enregistrer</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="py-4 bg-light mt-auto"
+		th:insert="~{fragments/footer :: footer}"></footer>
+	<script th:src="@{/webjars/jquery/3.6.0/jquery.min.js}"></script>
+	<script th:src="@{/webjars/jquery-ui/1.13.2/jquery-ui.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
+	<script th:src="@{/webjars/font-awesome/5.15.4/js/all.js}"></script>
+	<script th:src="@{/webjars/select2/4.0.13/js/select2.min.js}"></script>
+	<script type="text/javascript">
+		
+	</script>
+</body>
+</html>

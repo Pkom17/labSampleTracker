@@ -1,0 +1,7 @@
+sudo docker kill sample_tracker_app
+
+sudo docker rm sample_tracker_app
+
+sudo docker rmi lab_sample_tracker_app
+
+sudo docker compose up -d

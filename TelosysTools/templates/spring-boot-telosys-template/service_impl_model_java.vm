@@ -1,0 +1,111 @@
+/*
+ * Created on $today.date ( Date ISO $today.date("yyyy-MM-dd") - Time $today.time )
+ * @author Pascal
+*/
+package ${target.javaPackageFromFolder(${SRC})};
+
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import ${ROOT_PKG}.${REPOSITORY_PKG}.${entity.name}Repository;
+import ${ROOT_PKG}.${ENTITY_PKG}.${entity.name};
+import ${ROOT_PKG}.${SERVICE_INTERFACE_PKG}.${entity.name}Service;
+
+import java.util.Collections;
+import java.util.List;
+
+/**
+* <h2>${entity.name}Serviceimpl</h2>
+*/
+@Service
+@Transactional
+public class ${entity.name}ServiceImpl implements ${entity.name}Service {
+
+@Autowired
+private ${entity.name}Repository ${entity.name.toLowerCase()}Repo;
+
+ @Override
+    public ${entity.name} create(${entity.name} d) {
+
+       ${entity.name} entity;
+
+        try {
+            entity = ${entity.name.toLowerCase()}Repo.save(d);
+
+        } catch (Exception ex) {
+            return null;
+        }
+        return entity;
+    }
+
+    
+    @Override
+    public ${entity.name} update(${entity.name} d) {
+        ${entity.name} c;
+
+        try {
+            c = ${entity.name.toLowerCase()}Repo.saveAndFlush(d);
+
+        } catch (Exception ex) {
+            return null;
+        }
+        return c;
+    }
+
+
+    @Override
+    public ${entity.name} getOne(int id) {
+        ${entity.name} t;
+
+        try {
+            t = ${entity.name.toLowerCase()}Repo.findById(id).orElse(null);
+
+        } catch (Exception ex) {
+            return null;
+        }
+        return t;
+    }
+
+
+    @Override
+    public List<${entity.name}> getAll() {
+        List<${entity.name}> lst;
+
+        try {
+            lst = ${entity.name.toLowerCase()}Repo.findAll();
+
+        } catch (Exception ex) {
+            return Collections.emptyList();
+        }
+        return lst;
+    }
+
+
+    @Override
+    public long getTotal() {
+        long total;
+
+        try {
+            total = ${entity.name.toLowerCase()}Repo.count();
+        } catch (Exception ex) {
+            return 0;
+        }
+        return total;
+    }
+
+
+    @Override
+    public boolean delete(int id) {
+        try {
+            ${entity.name.toLowerCase()}Repo.deleteById(id);
+            return true;
+
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
+   
+
+}

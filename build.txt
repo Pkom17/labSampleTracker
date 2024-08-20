@@ -1,0 +1,6 @@
+docker compose up -d --build
+
+
+ docker build -t tracker_app:latest .
+
+docker save tracker_app:latest | gzip > ../LabSampleTracker.0.1.tar.gz

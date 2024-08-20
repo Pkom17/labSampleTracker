@@ -1,0 +1,11 @@
+#foreach($entity in $selectedEntities)
+# ${fn.uncapitalize($entity.name)}
+${fn.uncapitalize($entity.name)}=${entity.name}
+#foreach($attribute in $entity.attributes)
+${fn.uncapitalize($entity.name)}.${attribute.name}=${attribute.name}
+#end
+#foreach($link in $entity.links)
+${fn.uncapitalize($entity.name)}.${link.fieldName}=${link.fieldName}
+#end
+
+#end

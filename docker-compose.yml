@@ -1,0 +1,44 @@
+version: "3.7"
+services:
+  tracker_db:
+    build:
+      context: .
+      dockerfile: postgres.dockerfile
+    image: lab_sample_tracker_db
+    container_name: sample_tracker_db
+    environment:
+      POSTGRES_DB: sample_tracker
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: App_s3cret_Password
+      PGDATA: '/data/sampletracker_db'
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-q", "-d", "sample_tracker", "-U", "appuser" ]
+      timeout: 45s
+      interval: 10s
+      retries: 10 
+    volumes:
+       - trackerdb:/var/lib/postgresql/data
+    ports:
+      - "5435:5432"
+    restart: always
+
+#
+#  tracker_app:
+#    build:
+#        context: .
+#    container_name: sample_tracker_app
+#    image: lab_sample_tracker_app
+#    ports:
+#      - "8050:8050"
+#    depends_on:
+#      - tracker_db
+#    restart: always
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://tracker_db:5432/sample_tracker
+#      SPRING_DATASOURCE_USERNAME: appuser
+#      SPRING_DATASOURCE_PASSWORD: App_s3cret_Password
+#      JAVA_OPTS: "-Xmx16G"
+
+volumes:
+    trackerdb:
+    #  external: true

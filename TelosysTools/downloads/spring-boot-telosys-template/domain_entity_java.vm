@@ -1,0 +1,92 @@
+/* 
+ * Created on $today.date ( Date ISO $today.date("yyyy-MM-dd") - Time $today.time )
+ */
+package ${target.javaPackageFromFolder(${SRC})};
+
+import lombok.*;
+import jakarta.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+
+
+##--- Is "import List" required ? ( number of xxxToMany links )
+#set ( $COUNT = 0 )
+#foreach( $link in $entity.selectedLinks )
+#if ( $link.isCardinalityManyToMany() || $link.isCardinalityOneToMany() ) #set ( $COUNT = $COUNT + 1 ) #end
+#end
+#if ( $COUNT > 0 )
+import java.util.List;
+#end
+
+##--------------------------------------------------------------------------------------------------------
+## Data fields = fields not in Primary Key and not in selected Links    
+#set( $dataFields = $entity.getAttributesByCriteria( $const.NOT_KEY, $const.NOT_IN_SELECTED_LINKS ) )
+##--------------------------------------------------------------------------------------------------------
+## Link fields = fields not in Primary Key and used as FK in selected Links    
+#set( $linkFields = $entity.getAttributesByCriteria( $const.NOT_KEY, $const.IN_SELECTED_LINKS ) )
+##--------------------------------------------------------------------------------------------------------
+## #set( $allMappedFields = $fn.concatLists($entity.keyAttributes, $dataFields) )
+##--------------------------------------------------------------------------------------------------------
+
+/**
+* Domain class for entity "${entity.name}"
+*
+* @author Pascal
+*
+*/
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+//@ToString
+@Entity
+@Table(name = "${entity.databaseTable}")
+public class ${entity.name} implements Serializable {
+ 
+private static final long serialVersionUID = 1L;
+
+#foreach($attribute in $entity.attributes)
+## #if( $attribute.isKeyElement() )
+##    // primary key
+##	@Id
+## #end
+## #if( $attribute.isAutoIncremented() )
+##   @GeneratedValue(strategy=GenerationType.IDENTITY)
+## #end
+## #if( $attribute.dateType == $const.DATE_AND_TIME)
+##	@Temporal(TemporalType.TIMESTAMP)
+## #end
+##	@Column(name = "$attribute.databaseName")
+#if( $attribute.isKeyElement() )
+	@Id
+#end
+#if( $attribute.isAutoIncremented() )
+   @GeneratedValue(strategy=GenerationType.IDENTITY)
+#else
+$jpa.fieldAnnotations(4, $attribute)
+#end
+    private $attribute.type $attribute.name #if($attribute.hasInitialValue())= ${attribute.initialValue} #end;
+
+#end
+
+    ##--- ENTITY LINKS ( RELATIONSHIP )
+#foreach( $link in $entity.links )
+## all annotations : Cardinality, JoinColumn(s), etc
+$jpa.linkAnnotations(4, $link, $entity.attributes)
+## $jpa.linkCardinalityAnnotation(4, $link)
+## $jpa.linkJoinAnnotation(4, $link)
+    private ${link.formattedFieldType(10)} $link.fieldName ; 
+
+#end
+
+## This function generates a 'toString' method with 4 blanks before each line
+$java.toStringMethod($fn.concatLists($entity.keyAttributes, $entity.nonKeyAttributes), 4)## no EOL
+
+}
+
+
+
